@@ -1,0 +1,279 @@
+@font-face {
+    font-family: "BestTen";
+    src: url("../fonts/BestTen-DOT.otf") format("opentype");
+}
+
+::selection {
+    background-color: #8181df;
+    color: #ddf;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #ddf;
+    margin: 0;
+    padding-block: 16px;
+    color: #ddf;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+* {
+    font-family: "BestTen";
+    font-variant-ligatures: none;
+    box-sizing: border-box;
+}
+
+a {
+    color: #8181df;
+}
+
+.bar {
+    width: 90%;
+    height: 1em;
+    padding: 16px;
+    background-color: #202025;
+    border-radius: 8px 8px 0px 0px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.btn {
+    width: 16px;
+    height: 16px;
+    background-color: #8181df;
+    border-radius: 100%;
+    margin-inline-end: 8px;
+}
+
+.title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    line-height: 1.8;
+    transform: translateY(-2px);
+}
+
+#root {
+    width: 90%;
+    height: 100%;
+    max-height: 60ch;
+    overflow-y: auto;
+    background-color: #303035;
+    border-radius: 0px 0px 8px 8px;
+    position: relative;
+}
+
+.terminal {
+    width: 100%;
+    max-width: 80ch;
+    height: 100%;
+    padding: 16px;
+    overflow-x: auto;
+    position: relative;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+}
+
+pre {
+    width: max-content;
+    margin: 0px;
+    padding-right: 0px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.prompt {
+    width: auto;
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    padding: 0px;
+    margin: 0px;
+}
+
+form {
+    font-variant-ligatures: none;
+}
+
+#texter {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+    font-variant-ligatures: none;
+}
+
+#liner::before, .echo::before {
+    color: #8181df;
+    content: "> ";
+    margin-inline-end: .5ch;
+    font-size: 16px;
+}
+
+.echo {
+    white-space: break-spaces;
+}
+
+.out, #typer {
+    word-break: break-all;
+    max-width: 100%;
+}
+
+.out > pre {
+    padding-inline-end: 16px;
+}
+
+#command {
+    font-size: 0px;
+}
+
+#typer {
+    min-width: 1ch;
+    margin: 0px;
+    padding: 0px;
+    font-size: 16px;
+    white-space: break-spaces;
+}
+
+.cursor {
+    font-family: sans-serif;
+    animation: blink infinite 1s steps(2, jump-none);
+    color: #8181df;
+    position: relative;
+    left: 0px;
+    display: inline-block;
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    aspect-ratio: 3/4;
+    text-align: center;
+    overscroll-behavior: contain;
+    background-color: #202025;
+    border-radius: 8px;
+}
+
+.portrait {
+    width: 100%;
+    aspect-ratio: 2/3;
+}
+
+.landscape {
+    width: 100%;
+    aspect-ratio: 16/9;
+}
+
+.letterbox {
+    aspect-ratio: 3/4;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.portrait.letterbox {
+    width: auto;
+    height: 100%;
+}
+
+.landscape.letterbox {
+    aspect-ratio: 3/2;
+}
+
+.container > iframe {
+    width: auto;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.portrait > iframe {
+    height: 100%;
+    width: auto;
+    aspect-ratio: 2/3;
+}
+
+.landscape > iframe {
+    aspect-ratio: 16/9;
+    width: 100%;
+    height: auto;
+}
+
+.letterbox > iframe {
+    border-radius: 0px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width: 768px) {
+    .bar, #root {
+        width: 768px;
+        margin-inline: auto;
+    }
+
+    .container {
+        text-align: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    .landscape, .portrait {
+        margin-inline: auto;
+    }
+
+    .landscape {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+
+    .portrait {
+        width: 40%;
+        height: auto;
+    }
+
+    .letterbox {
+        aspect-ratio: 3/2;
+        width: 100%;
+    }
+    
+    .landscape > iframe {
+        width: 100%;
+        aspect-ratio: 16/9;
+    }
+
+    .portrait > iframe {
+        height: 100%;
+        aspect-ratio: 2/3;
+    }
+}
